@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет — МудТрекер</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <aside class="sidebar" aria-label="Навигация">
+    <div class="sidebar-header">
+      <a href="index.html" class="brand-logo text-decoration-none">
+        ☀️ МудТрекер
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <span class="section-label ps-2">Меню</span>
+
+      <button class="sidebar-nav-item" data-section="section-today">
+        <span class="nav-icon">🌤️</span>
+        Сегодня
+      </button>
+      <button class="sidebar-nav-item" data-section="section-calendar">
+        <span class="nav-icon">📅</span>
+        Календарь
+      </button>
+      <button class="sidebar-nav-item" data-section="section-history">
+        <span class="nav-icon">📖</span>
+        История
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar js-user-avatar">?</div>
+        <div class="sidebar-email js-user-email" title="">загрузка...</div>
+      </div>
+      <button class="btn-logout" type="button">
+        <i class="bi bi-box-arrow-right"></i> Выйти
+      </button>
+    </div>
+
+  </aside>
+  <div class="offcanvas offcanvas-start offcanvas-sidebar" tabindex="-1"
+       id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+
+    <div class="offcanvas-header">
+      <a href="index.html" class="brand-logo text-decoration-none" id="sidebarOffcanvasLabel">
+        ☀️ МудТрекер
+      </a>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+    </div>
+
+    <div class="offcanvas-body d-flex flex-column" style="padding:0">
+      <nav class="sidebar-nav flex-grow-1">
+        <span class="section-label ps-2">Меню</span>
+        <button class="sidebar-nav-item" data-section="section-today">
+          <span class="nav-icon">🌤️</span> Сегодня
+        </button>
+        <button class="sidebar-nav-item" data-section="section-calendar">
+          <span class="nav-icon">📅</span> Календарь
+        </button>
+        <button class="sidebar-nav-item" data-section="section-history">
+          <span class="nav-icon">📖</span> История
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar js-user-avatar">?</div>
+          <div class="sidebar-email js-user-email">загрузка...</div>
+        </div>
+        <button class="btn-logout" type="button">
+          <i class="bi bi-box-arrow-right"></i> Выйти
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <main class="dashboard-main">
+    <header class="dashboard-topbar">
+      <div class="topbar-left">
+        <button class="btn-sidebar-toggle" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas"
+                aria-controls="sidebarOffcanvas" aria-label="Открыть меню">
+          <i class="bi bi-list"></i>
+        </button>
+        <h1 class="topbar-title" id="topbar-title">Сегодня</h1>
+      </div>
+      <div class="topbar-date" id="topbar-date-display"></div>
+    </header>
+    <section class="dashboard-section dashboard-content" id="section-today">
+      <div class="today-card">
+        <div class="today-saved-banner d-none" id="today-saved-banner">
+          <span>😊</span> Запись за сегодня сохранена
+        </div>
+        <div class="today-date-display" id="today-date-display">Загрузка...</div>
+        <h2 class="today-heading">Как вы себя чувствуете?</h2>
+        <span class="section-label">Выберите настроение</span>
+        <div class="mood-selector" role="group" aria-label="Выбор настроения">
+          <button class="mood-btn" type="button" data-mood="great" aria-label="Отлично">
+            <span class="mood-emoji">😁</span>
+            <span class="mood-label">Отлично</span>
+          </button>
+          <button class="mood-btn" type="button" data-mood="good" aria-label="Хорошо">
+            <span class="mood-emoji">😊</span>
+            <span class="mood-label">Хорошо</span>
+          </button>
+          <button class="mood-btn" type="button" data-mood="okay" aria-label="Нормально">
+            <span class="mood-emoji">😐</span>
+            <span class="mood-label">Нормально</span>
+          </button>
+          <button class="mood-btn" type="button" data-mood="bad" aria-label="Плохо">
+            <span class="mood-emoji">😞</span>
+            <span class="mood-label">Плохо</span>
+          </button>
+          <button class="mood-btn" type="button" data-mood="terrible" aria-label="Ужасно">
+            <span class="mood-emoji">😢</span>
+            <span class="mood-label">Ужасно</span>
+          </button>
+        </div>
+        <hr class="divider">
+        <div class="mb-4">
+          <label for="today-note" class="form-label">
+            <i class="bi bi-pen me-1" style="color:var(--color-sandy)"></i>
+            Заметки о сегодняшнем дне
+          </label>
+          <textarea class="form-control note-textarea" id="today-note"
+                    placeholder="Напишите о своём дне — что произошло, о чём думаете, за что благодарны..."></textarea>
+          <div class="form-text">Заметка необязательна, но помогает лучше понять себя 🍃</div>
+        </div>
+        <button class="btn btn-primary px-4 py-2" id="save-today-btn" type="button">
+          <i class="bi bi-check2-circle me-2"></i>Сохранить запись
+        </button>
+      </div>
+    </section>
+    <section class="dashboard-section dashboard-content d-none" id="section-calendar">
+      <div class="calendar-card">
+        <div class="calendar-header">
+          <button class="calendar-nav-btn" id="calendar-prev" type="button" aria-label="Предыдущий месяц">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <h2 class="calendar-month-title" id="calendar-month-title">Загрузка...</h2>
+          <button class="calendar-nav-btn" id="calendar-next" type="button" aria-label="Следующий месяц">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+        <div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Календарь настроений">
+        </div>
+        <div class="calendar-legend">
+          <div class="legend-item"><div class="legend-dot great"></div>Отлично</div>
+          <div class="legend-item"><div class="legend-dot good"></div>Хорошо</div>
+          <div class="legend-item"><div class="legend-dot okay"></div>Нормально</div>
+          <div class="legend-item"><div class="legend-dot bad"></div>Плохо</div>
+          <div class="legend-item"><div class="legend-dot terrible"></div>Ужасно</div>
+        </div>
+      </div>
+      <p class="mt-3" style="font-size:.825rem;color:var(--color-text-light)">
+        <i class="bi bi-info-circle me-1"></i>
+        Нажмите на день с записью, чтобы посмотреть подробности.
+      </p>
+
+    </section>
+    <section class="dashboard-section dashboard-content d-none" id="section-history">
+
+      <h2 class="section-title mb-1">История записей</h2>
+      <p style="color:var(--color-text-muted);font-size:.9rem;margin-bottom:1.5rem">
+        Нажмите на запись, чтобы посмотреть подробности или удалить её.
+      </p>
+
+      <div class="history-list" id="history-list">
+      </div>
+
+    </section>
+
+  </main>
+</div>
+<div class="modal fade" id="entryModal" tabindex="-1" aria-labelledby="entryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-date-title">Запись</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-mood-display" id="modal-mood-display">
+          <span class="modal-mood-emoji" id="modal-mood-emoji">😊</span>
+          <div>
+            <div class="modal-mood-label" id="modal-mood-label">Хорошо</div>
+            <div class="modal-mood-meta" id="modal-mood-date"></div>
+          </div>
+        </div>
+        <span class="section-label">Заметка</span>
+        <div class="modal-note-box" id="modal-note-box">Заметка не добавлена</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-outline-primary d-none" id="modal-edit-btn">
+          <i class="bi bi-pencil me-1"></i>Редактировать
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-danger" id="modal-delete-btn"
+                style="--bs-btn-color:var(--mood-terrible);--bs-btn-border-color:var(--mood-terrible-border);--bs-btn-hover-bg:var(--mood-terrible-bg);">
+          <i class="bi bi-trash me-1"></i>Удалить
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast-container">
+  <div class="toast align-items-center" id="main-toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <span id="toast-icon" class="me-2">✅</span>
+      <strong class="me-auto" id="toast-title">Уведомление</strong>
+      <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+    <div class="toast-body" id="toast-msg">Операция выполнена успешно.</div>
+  </div>
+</div>
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
